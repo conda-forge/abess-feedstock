@@ -40,6 +40,8 @@ requirements:
 test:
   imports:
     - abess
+    - numpy
+    - pandas
   requires:
     - pip
   commands:
