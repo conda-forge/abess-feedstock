@@ -26,6 +26,7 @@ requirements:
     - python
     - pybind11 >=2.6.0
     - numpy
+    - pandas
   run:
     - {{ pin_compatible('numpy') }}
     - scipy
@@ -40,8 +41,6 @@ requirements:
 test:
   imports:
     - abess
-    - numpy
-    - pandas
   requires:
     - pip
   commands:
