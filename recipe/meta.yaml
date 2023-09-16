@@ -16,28 +16,30 @@ build:
 requirements:
   build:
     - {{ compiler('cxx') }}
-    - python
-    - make
-    - cmake
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - numpy                                  # [build_platform != target_platform]
+    - pybind11 >=2.6                         # [build_platform != target_platform]
     - llvm-openmp   # [osx]
     - libgomp       # [linux]
     - intel-openmp  # [win]
   host:
     - pip
     - python
+    - setuptools
     - numpy
-    - "pybind11[global]"
+    - pybind11 >=2.6
   run:
     - {{ pin_compatible('numpy') }}
-    - "scipy"
-    - "pandas"
-    - "scikit-learn >=0.24"
+    - python
+    - scipy
+    - pandas
+    - scikit-learn >=0.24
     - _openmp_mutex   # [linux]
     - libstdcxx-ng    # [linux]
     - libgcc-ng       # [linux]
     - libcxx          # [osx]
     - vs2015_runtime  # [win]
-    - python
 
 test:
   imports:
