@@ -17,10 +17,12 @@ requirements:
   build:
     - {{ compiler('cxx') }}
     - python
-    - make
     - cmake
     - numpy
-    - pybind11 >=2.6
+    - pybind11
+    - pybind11-global
+    - make  # [not win]
+    - ninja  # [win]
     - llvm-openmp   # [osx]
     - libgomp       # [linux]
     - intel-openmp  # [win]
@@ -29,7 +31,9 @@ requirements:
     - python
     - setuptools
     - numpy
-    - pybind11 >=2.6
+    - pybind11
+    - pybind11-global
+    - pybind11-abi
   run:
     - {{ pin_compatible('numpy') }}
     - python
