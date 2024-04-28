@@ -12,15 +12,7 @@ source:
 build:
   number: 0
   script: |
-    pwd
-    which cmake
-    {{ PYTHON }} -m pip show cmake
-    {{ PYTHON }} -m pip show pybind11
-    mkdir build
-    cd build
-    cmake ..
-    make -j
-    cd ..
+    {{ PYTHON }} -m pip install pybind11[global]
     {{ PYTHON }} -m pip install . -vv
 
 requirements:
