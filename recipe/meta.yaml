@@ -11,7 +11,17 @@ source:
 
 build:
   number: 0
-  script: {{ PYTHON }} -m pip install . -vv
+  script: |
+    pwd
+    where cmake
+    conda info pybind11
+    conda info cmake
+    mkdir build
+    cd build
+    cmake ..
+    make -j
+    cd ..
+    {{ PYTHON }} -m pip install . -vv
 
 requirements:
   build:
@@ -23,14 +33,12 @@ requirements:
     - libgomp       # [linux]
     - intel-openmp  # [win]
     - pybind11
-    - eigen
   host:
     - pip
     - python
     - setuptools
     - numpy
     - pybind11
-    - eigen
   run:
     - {{ pin_compatible('numpy') }}
     - python
