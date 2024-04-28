@@ -14,8 +14,8 @@ build:
   script: |
     pwd
     which cmake
-    conda info pybind11
-    conda info cmake
+    {{ PYTHON }} -m pip show cmake
+    {{ PYTHON }} -m pip show pybind11
     mkdir build
     cd build
     cmake ..
