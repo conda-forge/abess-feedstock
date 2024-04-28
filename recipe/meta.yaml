@@ -17,7 +17,8 @@ requirements:
   build:
     - {{ compiler('cxx') }}
     - cmake
-    - ninja
+    - make
+    - ninja         # [win]
     - llvm-openmp   # [osx]
     - libgomp       # [linux]
     - intel-openmp  # [win]
