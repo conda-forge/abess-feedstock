@@ -22,6 +22,8 @@ requirements:
     - llvm-openmp   # [osx]
     - libgomp       # [linux]
     - intel-openmp  # [win]
+    - pybind11
+    - eigen
   host:
     - pip
     - python
