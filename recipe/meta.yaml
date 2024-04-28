@@ -16,9 +16,7 @@ build:
 requirements:
   build:
     - {{ compiler('cxx') }}
-    - python
     - cmake
-    - numpy
     - pybind11
     - pybind11-global
     - make  # [not win]
@@ -33,7 +31,7 @@ requirements:
     - numpy
     - pybind11
     - pybind11-global
-    - pybind11-abi
+    - eigen
   run:
     - {{ pin_compatible('numpy') }}
     - python
