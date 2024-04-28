@@ -12,7 +12,7 @@ source:
 build:
   number: 0
   script: |
-    {{ PYTHON }} -m pip install "pybind11[global]"
+    conda install pybind11
     {{ PYTHON }} -m pip install . -vv
 
 requirements:
