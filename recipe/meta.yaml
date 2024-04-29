@@ -13,7 +13,7 @@ source:
 
 build:
   number: {{ build_number }}
-  script: {{ PYTHON }} -m pip install -v --no-deps .
+  # script: {{ PYTHON }} -m pip install -v --no-deps .
 
 requirements:
   build:
