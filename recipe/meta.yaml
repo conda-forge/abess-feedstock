@@ -24,11 +24,12 @@ requirements:
     - llvm-openmp   # [osx]
     - libgomp       # [linux]
     - intel-openmp  # [win]
+    - pybind11
   host:
     - pip
     - python
+    - wheel
     - setuptools
-    - numpy
     - pybind11
   run:
     - {{ pin_compatible('numpy') }}
