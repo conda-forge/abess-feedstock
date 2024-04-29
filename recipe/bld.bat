@@ -8,8 +8,12 @@ echo "==> Start Build"
 echo "  --> Show Conda List"
 conda list
 
+echo "  --> Show Pip List"
+"%PYTHON%" --version
+"%PYTHON%" -m pip list
+
 echo "  --> Install ABESS"
-pip install -v --no-deps .
+"%PYTHON%" -m pip install -v --no-deps .
 
 echo "==> Finish Build"
 exit 0
