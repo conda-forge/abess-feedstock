@@ -3,7 +3,7 @@ setlocal enabledelayedexpansion
 
 echo "==> Start Build"
 echo "  --> Install Dependencies"
-conda install -y numpy pandas scipy scikit-learns pybind11
+conda install -y numpy pandas scipy scikit-learn pybind11
 
 echo "  --> Install ABESS"
 pip install -v --no-deps .
