@@ -1,19 +1,26 @@
 {% set name = "abess" %}
 {% set version = "0.4.8" %}
+{% set build_number = "0" %}
+{% set sha256 = "1fce0dcbac8d3ab04289b3a29780e45848754f2a7948caf3ad7fa5cb10dfc031" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 1fce0dcbac8d3ab04289b3a29780e45848754f2a7948caf3ad7fa5cb10dfc031
+  url: https://pypi.io/packages/source/{{ name }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: {{ build_number }}
   script: |
-    conda install -c conda-forge pybind11
-    {{ PYTHON }} -m pip install . -vv
+    echo "==> Start Build Script"
+    {{ PYTHON }} -m conda init
+    echo "==> Install PyBind11"
+    {{ PYTHON }} -m conda install pybind11
+    echo "==> Install ABESS"
+    {{ PYTHON }} -m pip install -v --no-cache-dir .
+    echo "==> Finish installation"
 
 requirements:
   build:
