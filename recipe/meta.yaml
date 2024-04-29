@@ -13,14 +13,7 @@ source:
 
 build:
   number: {{ build_number }}
-  script: |
-    echo "==> Start Build Script"
-    {{ PYTHON }} -m conda init
-    echo "==> Install PyBind11"
-    {{ PYTHON }} -m conda install pybind11
-    echo "==> Install ABESS"
-    {{ PYTHON }} -m pip install -v --no-cache-dir .
-    echo "==> Finish installation"
+  script: {{ PYTHON }} -m pip install -v --no-deps .
 
 requirements:
   build:
@@ -31,7 +24,6 @@ requirements:
     - llvm-openmp   # [osx]
     - libgomp       # [linux]
     - intel-openmp  # [win]
-    - pybind11
   host:
     - pip
     - python
