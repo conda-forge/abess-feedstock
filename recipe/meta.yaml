@@ -1,43 +1,47 @@
 {% set name = "abess" %}
-{% set version = "0.4.6" %}
+{% set version = "0.4.8" %}
+{% set build_number = "0" %}
+{% set sha256 = "1fce0dcbac8d3ab04289b3a29780e45848754f2a7948caf3ad7fa5cb10dfc031" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name }}
   version: {{ version }}
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 9830fb70a2854faf233876eb81b27a3e7265533af682f9f8fe0d4e1de0293cb6
+  sha256: {{ sha256 }}
 
 build:
-  number: 1
-  script: {{ PYTHON }} -m pip install . -vv
+  number: {{ build_number }}
+  # script: {{ PYTHON }} -m pip install -v --no-deps .
 
 requirements:
   build:
     - {{ compiler('cxx') }}
-    - python
-    - make
     - cmake
+    - make
+    - ninja         # [win]
     - llvm-openmp   # [osx]
     - libgomp       # [linux]
     - intel-openmp  # [win]
+    - pybind11
   host:
     - pip
     - python
-    - numpy
-    - "pybind11 >=2.6.0"
+    - wheel
+    - setuptools
+    - pybind11
   run:
     - {{ pin_compatible('numpy') }}
-    - "scipy"
-    - "pandas"
-    - "scikit-learn >=0.24"
+    - python
+    - scipy
+    - pandas
+    - scikit-learn >=0.24
     - _openmp_mutex   # [linux]
     - libstdcxx-ng    # [linux]
     - libgcc-ng       # [linux]
     - libcxx          # [osx]
     - vs2015_runtime  # [win]
-    - python
 
 test:
   imports:
