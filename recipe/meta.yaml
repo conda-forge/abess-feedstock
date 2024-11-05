@@ -1,5 +1,5 @@
 {% set name = "abess" %}
-{% set version = "0.4.6" %}
+{% set version = "0.4.8" %}
 
 package:
   name: {{ name|lower }}
@@ -7,15 +7,16 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 9830fb70a2854faf233876eb81b27a3e7265533af682f9f8fe0d4e1de0293cb6
+  sha256: 1fce0dcbac8d3ab04289b3a29780e45848754f2a7948caf3ad7fa5cb10dfc031
 
 build:
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   build:
     - {{ compiler('cxx') }}
+    - {{ stdlib("c") }}
     - python
     - make
     - cmake
