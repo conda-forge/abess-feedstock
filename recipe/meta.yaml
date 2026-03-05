@@ -17,7 +17,6 @@ requirements:
   build:
     - {{ compiler('cxx') }}
     - {{ stdlib("c") }}
-    - python
     - make
     - cmake
     - llvm-openmp   # [osx]
@@ -28,6 +27,7 @@ requirements:
     - python
     - numpy
     - "pybind11 >=2.6.0"
+    - setuptools
   run:
     - {{ pin_compatible('numpy') }}
     - "scipy"
