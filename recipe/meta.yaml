@@ -1,22 +1,22 @@
 {% set name = "abess" %}
-{% set version = "0.4.6" %}
+{% set version = "0.4.11" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 9830fb70a2854faf233876eb81b27a3e7265533af682f9f8fe0d4e1de0293cb6
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: bcd237cfaa51dc1593484b2b2c15bf621524291a59c628d8ea6bbd11a09f74a6
 
 build:
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   build:
     - {{ compiler('cxx') }}
-    - python
+    - {{ stdlib("c") }}
     - make
     - cmake
     - llvm-openmp   # [osx]
@@ -27,6 +27,7 @@ requirements:
     - python
     - numpy
     - "pybind11 >=2.6.0"
+    - setuptools
   run:
     - {{ pin_compatible('numpy') }}
     - "scipy"
